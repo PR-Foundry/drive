@@ -1,0 +1,14 @@
+# pnpm settings file (NOT a workspace root — no `packages:` key declared, so it
+# does NOT turn frontend/ into a workspace root).
+# Required because pnpm v10.26+/v11 fail bench's `yarn install --check-files`
+# postinstall chain on ERR_PNPM_IGNORED_BUILDS unless these native-compile
+# dependencies are explicitly allowed to run their install scripts. Equivalent
+# to the deprecated `pnpm.onlyBuiltDependencies` field in package.json (ignored
+# in v11 — allowBuilds is read only from pnpm-workspace.yaml / config.yaml).
+allowBuilds:
+  "@parcel/watcher": true
+  "@swc/core": true
+  canvas: true
+  core-js: true
+  esbuild: true
+  vue-demi: true
